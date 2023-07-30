@@ -9,6 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { PicturesListComponent } from './components/pictures-list/pictures-list.component';
+import { AppState } from './state/app.state';
+import { NgxsModule } from '@ngxs/store';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,11 @@ import { PicturesListComponent } from './components/pictures-list/pictures-list.
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule,
+    NgxsModule.forRoot([
+      AppState,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
