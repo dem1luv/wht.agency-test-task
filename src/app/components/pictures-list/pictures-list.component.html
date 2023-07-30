@@ -1,5 +1,5 @@
 <mat-grid-list [cols]="gridCols" rowHeight="1:1" (window:resize)="onGridResize($event)">
   <mat-grid-tile *ngFor="let item of list">
-    <img [src]="item.url" alt="cat image" class="w-full h-full object-cover">
+    <app-lazy-loading-picture class="w-full h-full object-cover" [src]="item.url"></app-lazy-loading-picture>
   </mat-grid-tile>
 </mat-grid-list>

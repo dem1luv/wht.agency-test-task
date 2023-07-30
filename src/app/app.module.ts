@@ -13,12 +13,14 @@ import { AppState } from './state/app.state';
 import { NgxsModule } from '@ngxs/store';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LazyLoadingPictureComponent } from './components/pictures-list/lazy-loading-picture/lazy-loading-picture.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchFormComponent,
-    PicturesListComponent
+    PicturesListComponent,
+    LazyLoadingPictureComponent
   ],
   imports: [
     BrowserModule,
