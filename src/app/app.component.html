@@ -3,36 +3,7 @@
     <span class="text-purple-600">Puss</span>earch
   </h1>
 
-  <form class="flex justify-center">
-    <mat-form-field class="mr-2">
-      <mat-label>Breed</mat-label>
-      <mat-select>
-        <mat-option value="one">First option</mat-option>
-        <mat-option value="two">Second option</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Per Page</mat-label>
-      <mat-select>
-        <mat-option value="one">First option</mat-option>
-        <mat-option value="two">Second option</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </form>
+  <app-search-form></app-search-form>
 </div>
 
-<mat-grid-list [cols]="gridCols" rowHeight="1:1" (window:resize)="onGridResize($event)">
-  <mat-grid-tile class="bg-purple-50">1</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-100">2</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-200">3</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-300">4</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-50">5</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-100">6</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-200">7</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-300">8</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-50">9</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-100">10</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-200">11</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-300">12</mat-grid-tile>
-</mat-grid-list>
+<app-pictures-list></app-pictures-list>
