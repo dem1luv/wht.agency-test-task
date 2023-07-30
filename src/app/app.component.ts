@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppState } from './state/app.state';
 import { Select, Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
-import { GetCatList, SetSearchForm } from './state/app.actions';
+import { GetBreedList, GetCatList, SetSearchForm } from './state/app.actions';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -12,15 +12,18 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   @Select(AppState.catList) catList$!: Observable<any[]>;
+  @Select(AppState.breedList) breedList$!: Observable<any[]>;
 
   form: FormGroup = new FormGroup({
     limit: new FormControl(10),
+    breed: new FormControl(),
   });
 
   constructor(private store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(new GetCatList());
+    this.store.dispatch(new GetBreedList());
   }
 
   onSelectChange() {

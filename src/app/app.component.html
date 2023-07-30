@@ -3,7 +3,7 @@
     <span class="text-purple-600">Puss</span>earch
   </h1>
 
-  <app-search-form [form]="form" (selectChange)="onSelectChange()"></app-search-form>
+  <app-search-form [form]="form" [breedList]="breedList$ | async" (selectChange)="onSelectChange()"></app-search-form>
 </div>
 
 <app-pictures-list [list]="catList$ | async"></app-pictures-list>

@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class SearchFormComponent {
   @Input() form!: FormGroup;
+  @Input() breedList!: any[] | null;
   @Output() selectChange: EventEmitter<void> = new EventEmitter<void>();
 
   limitValues: number[] = [10, 20, 50, 100];

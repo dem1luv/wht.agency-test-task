@@ -1,11 +1,13 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { CatService } from '../services/cat.service';
-import { GetCatList, SetSearchForm } from './app.actions';
+import { GetBreedList, GetCatList, SetSearchForm } from './app.actions';
 import { Injectable } from '@angular/core';
 
 export const getAppInitialState = (): App => ({
   catList: [],
+  breedList: [],
   form: {
+    breed: [],
     limit: 10,
   }
 });
@@ -25,6 +27,11 @@ export class AppState {
   }
 
   @Selector()
+  static breedList(state: App) {
+    return state.breedList;
+  }
+
+  @Selector()
   static formLimit(state: App) {
     return state.form.limit;
   }
@@ -32,8 +39,9 @@ export class AppState {
   @Action(GetCatList)
   async getCatList(ctx: StateContext<App>, action: GetCatList) {
     try {
-      const state = ctx.getState();
-      this.catService.getList(state.form.limit).subscribe((catList: any[]) => {
+      const form = ctx.getState().form;
+      this.catService.getList(form.breed, form.limit).subscribe((catList: any[]) => {
+        const state = ctx.getState();
         ctx.setState({
           ...state,
           catList
@@ -52,5 +60,20 @@ export class AppState {
       form: action.form
     });
     ctx.dispatch(new GetCatList());
+  }
+
+  @Action(GetBreedList)
+  async getBreedList(ctx: StateContext<App>, action: GetBreedList) {
+    try {
+      this.catService.getBreedList().subscribe((breedList: any[]) => {
+        const state = ctx.getState();
+        ctx.setState({
+          ...state,
+          breedList,
+        });
+      });
+    } catch (error) {
+      // ctx.dispatch(new GetCatListFailed(error))
+    }
   }
 }
