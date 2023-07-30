@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pictures-list',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pictures-list.component.scss']
 })
 export class PicturesListComponent implements OnInit {
+  @Input() list: any[] | null = [];
+
   gridCols: number = 6;
 
   ngOnInit() {

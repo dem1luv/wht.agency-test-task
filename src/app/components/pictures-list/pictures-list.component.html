@@ -1,14 +1,5 @@
 <mat-grid-list [cols]="gridCols" rowHeight="1:1" (window:resize)="onGridResize($event)">
-  <mat-grid-tile class="bg-purple-50">1</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-100">2</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-200">3</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-300">4</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-50">5</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-100">6</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-200">7</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-300">8</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-50">9</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-100">10</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-200">11</mat-grid-tile>
-  <mat-grid-tile class="bg-purple-300">12</mat-grid-tile>
+  <mat-grid-tile *ngFor="let item of list">
+    <img [src]="item.url" alt="cat image" class="w-full h-full object-cover">
+  </mat-grid-tile>
 </mat-grid-list>
