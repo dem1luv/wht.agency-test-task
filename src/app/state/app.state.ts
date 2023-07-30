@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 export const getAppInitialState = (): App => ({
   catList: [],
+  catListLoaded: false,
   breedList: [],
   form: {
     breed: [],
@@ -27,6 +28,11 @@ export class AppState {
   }
 
   @Selector()
+  static catListLoaded(state: App) {
+    return state.catListLoaded;
+  }
+
+  @Selector()
   static breedList(state: App) {
     return state.breedList;
   }
@@ -39,12 +45,17 @@ export class AppState {
   @Action(GetCatList)
   async getCatList(ctx: StateContext<App>, action: GetCatList) {
     try {
+      ctx.setState({
+        ...ctx.getState(),
+        catListLoaded: false,
+      });
+
       const form = ctx.getState().form;
       this.catService.getList(form.breed, form.limit).subscribe((catList: any[]) => {
-        const state = ctx.getState();
         ctx.setState({
-          ...state,
-          catList
+          ...ctx.getState(),
+          catList,
+          catListLoaded: true,
         });
       });
     } catch (error) {

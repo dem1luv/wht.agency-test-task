@@ -1,8 +1,9 @@
 interface App {
-  catList: any[];
-  breedList: any[],
+  catList: any[]
+  catListLoaded: boolean
+  breedList: any[]
   form: {
-    breed: string[],
-    limit: number,
+    breed: string[]
+    limit: number
   }
 }

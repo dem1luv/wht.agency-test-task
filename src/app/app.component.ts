@@ -12,6 +12,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   @Select(AppState.catList) catList$!: Observable<any[]>;
+  @Select(AppState.catListLoaded) catListLoaded$!: Observable<boolean>;
   @Select(AppState.breedList) breedList$!: Observable<any[]>;
 
   form: FormGroup = new FormGroup({

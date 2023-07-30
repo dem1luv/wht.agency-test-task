@@ -12,7 +12,7 @@ export class CatService {
   constructor(private readonly http: HttpClient) { }
 
   getList(breedIds: string[], limit: number) {
-    const breedIdsQuery = breedIds.join(',');
+    const breedIdsQuery = breedIds ? breedIds.join(',') : '';
     return this.http.get<any[]>(`${apiUrl}/images/search?api_key=${CAT_API_KEY}&breed_ids=${breedIdsQuery}&limit=${limit}`);
   }
 
