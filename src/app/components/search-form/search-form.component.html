@@ -10,11 +10,7 @@
   <mat-form-field>
     <mat-label>Per Page</mat-label>
     <mat-select formControlName="limit" (selectionChange)="onSelectChange()">
-      <mat-option [value]="2">2</mat-option>
-      <mat-option [value]="4">4</mat-option>
-      <mat-option [value]="6">6</mat-option>
-      <mat-option [value]="8">8</mat-option>
-      <mat-option [value]="10">10</mat-option>
+      <mat-option *ngFor="let item of limitValues" [value]="item">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>
 </form>

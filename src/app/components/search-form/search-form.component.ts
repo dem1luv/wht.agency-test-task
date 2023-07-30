@@ -11,6 +11,8 @@ export class SearchFormComponent {
   @Input() form!: FormGroup;
   @Output() selectChange: EventEmitter<void> = new EventEmitter<void>();
 
+  limitValues: number[] = [10, 20, 50, 100];
+
   onSelectChange() {
     this.selectChange.emit();
   }
