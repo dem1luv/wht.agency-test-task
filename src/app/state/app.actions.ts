@@ -1,4 +1,8 @@
 export class GetCatList {
   static readonly type = '[Cat API] Get Cat List';
-  constructor(public limit: number) {}
+}
+
+export class SetSearchForm {
+  static readonly type = '[Search Form] Set Search Form';
+  constructor(public form: any) {}
 }

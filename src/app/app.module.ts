@@ -12,6 +12,7 @@ import { PicturesListComponent } from './components/pictures-list/pictures-list.
 import { AppState } from './state/app.state';
 import { NgxsModule } from '@ngxs/store';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgxsModule.forRoot([
       AppState,
     ]),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
