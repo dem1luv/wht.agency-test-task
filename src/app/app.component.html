@@ -22,7 +22,7 @@
   </form>
 </div>
 
-<mat-grid-list cols="6" rowHeight="1:1">
+<mat-grid-list [cols]="gridCols" rowHeight="1:1" (window:resize)="onGridResize($event)">
   <mat-grid-tile class="bg-purple-50">1</mat-grid-tile>
   <mat-grid-tile class="bg-purple-100">2</mat-grid-tile>
   <mat-grid-tile class="bg-purple-200">3</mat-grid-tile>
