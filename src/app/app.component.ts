@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AppState } from './state/app.state';
 import { Select, Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
@@ -10,7 +10,8 @@ import { IBreed } from './types/common/breed.interface';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   @Select(AppState.catList) catList$!: Observable<ICat[]>;

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IBreed } from '../../types/common/breed.interface';
@@ -6,7 +6,8 @@ import { IBreed } from '../../types/common/breed.interface';
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
-  styleUrls: ['./search-form.component.scss']
+  styleUrls: ['./search-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchFormComponent {
   @Input() form!: FormGroup;

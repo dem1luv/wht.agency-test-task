@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ICat } from '../../types/common/cat.interface';
 
 @Component({
   selector: 'app-pictures-list',
   templateUrl: './pictures-list.component.html',
-  styleUrls: ['./pictures-list.component.scss']
+  styleUrls: ['./pictures-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PicturesListComponent implements OnInit {
   @Input() list: ICat[] | null = [];
