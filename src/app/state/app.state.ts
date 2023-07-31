@@ -52,7 +52,7 @@ export class AppState {
       });
 
       const form = ctx.getState().form;
-      this.catService.getList(form.breed, form.limit).subscribe((catList: any[]) => {
+      this.catService.getList(form.breed, form.limit).subscribe(catList => {
         ctx.setState({
           ...ctx.getState(),
           catList,
@@ -77,7 +77,7 @@ export class AppState {
   @Action(GetBreedList)
   async getBreedList(ctx: StateContext<IApp>, action: GetBreedList) {
     try {
-      this.catService.getBreedList().subscribe((breedList: any[]) => {
+      this.catService.getBreedList().subscribe(breedList => {
         const state = ctx.getState();
         ctx.setState({
           ...state,

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ICat } from '../../types/common/cat.interface';
 
 @Component({
   selector: 'app-pictures-list',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./pictures-list.component.scss']
 })
 export class PicturesListComponent implements OnInit {
-  @Input() list: any[] | null = [];
+  @Input() list: ICat[] | null = [];
 
   gridCols: number = 6;
 
@@ -29,6 +30,6 @@ export class PicturesListComponent implements OnInit {
   }
 
   onGridResize(event: any) {
-    this.resizeGridList(event.target.innerWidth);
+    this.resizeGridList(event?.target?.innerWidth);
   }
 }

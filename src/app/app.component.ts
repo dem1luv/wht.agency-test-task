@@ -4,6 +4,8 @@ import { Select, Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { GetBreedList, GetCatList, SetSearchForm } from './state/app.actions';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ICat } from './types/common/cat.interface';
+import { IBreed } from './types/common/breed.interface';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +13,9 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @Select(AppState.catList) catList$!: Observable<any[]>;
+  @Select(AppState.catList) catList$!: Observable<ICat[]>;
   @Select(AppState.catListLoaded) catListLoaded$!: Observable<boolean>;
-  @Select(AppState.breedList) breedList$!: Observable<any[]>;
+  @Select(AppState.breedList) breedList$!: Observable<IBreed[]>;
 
   form: FormGroup = new FormGroup({
     limit: new FormControl(10),
