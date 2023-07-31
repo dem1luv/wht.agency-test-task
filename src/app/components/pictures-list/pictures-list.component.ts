@@ -18,15 +18,15 @@ export class PicturesListComponent implements OnInit {
 
   resizeGridList(innerWidth: number) {
     if (innerWidth > 1200) {
-      this.gridCols = 6;
-    } else if (innerWidth > 900) {
       this.gridCols = 5;
-    } else if (innerWidth > 600) {
+    } else if (innerWidth > 900) {
       this.gridCols = 4;
-    } else if (innerWidth > 400) {
+    } else if (innerWidth > 600) {
       this.gridCols = 3;
-    } else {
+    } else if (innerWidth > 400) {
       this.gridCols = 2;
+    } else {
+      this.gridCols = 1;
     }
   }
 
