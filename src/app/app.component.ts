@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   @Select(AppState.catList) catList$!: Observable<ICat[]>;
   @Select(AppState.catListLoaded) catListLoaded$!: Observable<boolean>;
   @Select(AppState.breedList) breedList$!: Observable<IBreed[]>;
+  @Select(AppState.breedListLoaded) breedListLoaded$!: Observable<boolean>;
 
   form: FormGroup = new FormGroup({
     limit: new FormControl(10),

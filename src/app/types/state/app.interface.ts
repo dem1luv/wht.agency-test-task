@@ -6,5 +6,6 @@ export interface IApp {
   catList: ICat[]
   catListLoaded: boolean
   breedList: IBreed[]
+  breedListLoaded: boolean
   form: ISearchForm
 }

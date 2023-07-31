@@ -1,7 +1,11 @@
 <form class="flex justify-center" [formGroup]="form">
   <mat-form-field class="mr-2">
-    <mat-label>Breed</mat-label>
-    <mat-select formControlName="breed" multiple (selectionChange)="onSelectChange()">
+    <mat-label>
+      <ng-container *ngIf="breedListLoaded; else loadingBreed">
+        Breed
+      </ng-container>
+    </mat-label>
+    <mat-select formControlName="breed" multiple (selectionChange)="onSelectChange()" [disabled]="!breedListLoaded">
       <mat-option *ngFor="let item of breedList" [value]="item.id">{{item.name}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -13,3 +17,10 @@
     </mat-select>
   </mat-form-field>
 </form>
+
+<ng-template #loadingBreed>
+  <div class="flex justify-center">
+    <mat-spinner [diameter]="20" class="me-2"></mat-spinner>
+    Breed
+  </div>
+</ng-template>

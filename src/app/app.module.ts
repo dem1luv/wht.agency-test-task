@@ -14,6 +14,7 @@ import { NgxsModule } from '@ngxs/store';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadingPictureComponent } from './components/pictures-list/lazy-loading-picture/lazy-loading-picture.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LazyLoadingPictureComponent } from './components/pictures-list/lazy-loa
       AppState,
     ]),
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

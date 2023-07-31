@@ -12,6 +12,7 @@ import { IBreed } from '../../types/common/breed.interface';
 export class SearchFormComponent {
   @Input() form!: FormGroup;
   @Input() breedList!: IBreed[] | null;
+  @Input() breedListLoaded!: boolean | null;
   @Output() selectChange: EventEmitter<void> = new EventEmitter<void>();
 
   limitValues: number[] = [10, 20, 50, 100];

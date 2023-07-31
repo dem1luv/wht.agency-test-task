@@ -3,10 +3,18 @@
     <span class="text-purple-600">Puss</span>earch
   </h1>
 
-  <app-search-form [form]="form" [breedList]="breedList$ | async" (selectChange)="onSelectChange()"></app-search-form>
+  <app-search-form
+      [form]="form"
+      [breedList]="breedList$ | async"
+      [breedListLoaded]="breedListLoaded$ | async"
+      (selectChange)="onSelectChange()"
+  ></app-search-form>
 </div>
 
-<app-pictures-list [list]="catList$ | async" *ngIf="catListLoaded$ | async; else loading"></app-pictures-list>
+<app-pictures-list
+    [list]="catList$ | async"
+    *ngIf="catListLoaded$ | async; else loading"
+></app-pictures-list>
 
 <ng-template #loading>
   <div role="status" class="w-full h-full flex items-center justify-center">

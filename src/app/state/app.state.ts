@@ -8,6 +8,7 @@ export const getAppInitialState = (): IApp => ({
   catList: [],
   catListLoaded: false,
   breedList: [],
+  breedListLoaded: false,
   form: {
     breed: [],
     limit: 10,
@@ -36,6 +37,11 @@ export class AppState {
   @Selector()
   static breedList(state: IApp) {
     return state.breedList;
+  }
+
+  @Selector()
+  static breedListLoaded(state: IApp) {
+    return state.breedListLoaded;
   }
 
   @Selector()
@@ -77,11 +83,17 @@ export class AppState {
   @Action(GetBreedList)
   async getBreedList(ctx: StateContext<IApp>, action: GetBreedList) {
     try {
+      ctx.setState({
+        ...ctx.getState(),
+        breedListLoaded: false,
+      });
+
       this.catService.getBreedList().subscribe(breedList => {
         const state = ctx.getState();
         ctx.setState({
           ...state,
           breedList,
+          breedListLoaded: true,
         });
       });
     } catch (error) {
