@@ -2,8 +2,9 @@ import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { CatService } from '../services/cat.service';
 import { GetBreedList, GetCatList, SetSearchForm } from './app.actions';
 import { Injectable } from '@angular/core';
+import { IApp } from '../types/state/app.interface';
 
-export const getAppInitialState = (): App => ({
+export const getAppInitialState = (): IApp => ({
   catList: [],
   catListLoaded: false,
   breedList: [],
@@ -13,7 +14,7 @@ export const getAppInitialState = (): App => ({
   }
 });
 
-@State<App>({
+@State<IApp>({
   name: 'app',
   defaults: getAppInitialState()
 })
@@ -23,27 +24,27 @@ export class AppState {
   }
 
   @Selector()
-  static catList(state: App) {
+  static catList(state: IApp) {
     return state.catList;
   }
 
   @Selector()
-  static catListLoaded(state: App) {
+  static catListLoaded(state: IApp) {
     return state.catListLoaded;
   }
 
   @Selector()
-  static breedList(state: App) {
+  static breedList(state: IApp) {
     return state.breedList;
   }
 
   @Selector()
-  static formLimit(state: App) {
+  static formLimit(state: IApp) {
     return state.form.limit;
   }
 
   @Action(GetCatList)
-  async getCatList(ctx: StateContext<App>, action: GetCatList) {
+  async getCatList(ctx: StateContext<IApp>, action: GetCatList) {
     try {
       ctx.setState({
         ...ctx.getState(),
@@ -64,7 +65,7 @@ export class AppState {
   }
 
   @Action(SetSearchForm)
-  async setSearchForm(ctx: StateContext<App>, action: SetSearchForm) {
+  async setSearchForm(ctx: StateContext<IApp>, action: SetSearchForm) {
     const state = ctx.getState();
     ctx.setState({
       ...state,
@@ -74,7 +75,7 @@ export class AppState {
   }
 
   @Action(GetBreedList)
-  async getBreedList(ctx: StateContext<App>, action: GetBreedList) {
+  async getBreedList(ctx: StateContext<IApp>, action: GetBreedList) {
     try {
       this.catService.getBreedList().subscribe((breedList: any[]) => {
         const state = ctx.getState();
