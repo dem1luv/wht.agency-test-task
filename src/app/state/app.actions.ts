@@ -12,3 +12,9 @@ export class SetSearchForm {
 export class GetBreedList {
   static readonly type = '[Cat API] Get Breed List';
 }
+
+export class ShowNotificationError {
+  static readonly type = '[Notification] Show Error';
+  constructor(public message: string) {}
+}
+

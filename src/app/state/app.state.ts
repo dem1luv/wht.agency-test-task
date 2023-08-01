@@ -1,8 +1,15 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { CatService } from '../services/cat.service';
-import { GetBreedList, GetCatList, SetSearchForm } from './app.actions';
+import {
+  GetBreedList,
+  GetCatList,
+  SetSearchForm,
+  ShowNotificationError
+} from './app.actions';
 import { Injectable } from '@angular/core';
 import { IApp } from '../types/state/app.interface';
+import { catchError, of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export const getAppInitialState = (): IApp => ({
   catList: [],
@@ -21,7 +28,10 @@ export const getAppInitialState = (): IApp => ({
 })
 @Injectable()
 export class AppState {
-  constructor(private catService: CatService) {
+  constructor(
+    private catService: CatService,
+    private snackBar: MatSnackBar,
+  ) {
   }
 
   @Selector()
@@ -50,28 +60,31 @@ export class AppState {
   }
 
   @Action(GetCatList)
-  async getCatList(ctx: StateContext<IApp>, action: GetCatList) {
-    try {
-      ctx.setState({
-        ...ctx.getState(),
-        catListLoaded: false,
-      });
+  getCatList(ctx: StateContext<IApp>, action: GetCatList) {
+    ctx.setState({
+      ...ctx.getState(),
+      catListLoaded: false,
+    });
 
-      const form = ctx.getState().form;
-      this.catService.getList(form.breed, form.limit).subscribe(catList => {
+    const form = ctx.getState().form;
+    this.catService.getList(form.breed, form.limit)
+      .pipe(
+        catchError(error => {
+          ctx.dispatch(new ShowNotificationError('Failed to load list of cats'));
+          return of([]);
+        })
+      )
+      .subscribe(catList => {
         ctx.setState({
           ...ctx.getState(),
           catList,
           catListLoaded: true,
         });
       });
-    } catch (error) {
-      // ctx.dispatch(new GetCatListFailed(error))
-    }
   }
 
   @Action(SetSearchForm)
-  async setSearchForm(ctx: StateContext<IApp>, action: SetSearchForm) {
+  setSearchForm(ctx: StateContext<IApp>, action: SetSearchForm) {
     const state = ctx.getState();
     ctx.setState({
       ...state,
@@ -81,14 +94,20 @@ export class AppState {
   }
 
   @Action(GetBreedList)
-  async getBreedList(ctx: StateContext<IApp>, action: GetBreedList) {
-    try {
-      ctx.setState({
-        ...ctx.getState(),
-        breedListLoaded: false,
-      });
+  getBreedList(ctx: StateContext<IApp>, action: GetBreedList) {
+    ctx.setState({
+      ...ctx.getState(),
+      breedListLoaded: false,
+    });
 
-      this.catService.getBreedList().subscribe(breedList => {
+    this.catService.getBreedList()
+      .pipe(
+        catchError(error => {
+          ctx.dispatch(new ShowNotificationError('Failed to load breed list'));
+          return of([]);
+        })
+      )
+      .subscribe(breedList => {
         const state = ctx.getState();
         ctx.setState({
           ...state,
@@ -96,8 +115,12 @@ export class AppState {
           breedListLoaded: true,
         });
       });
-    } catch (error) {
-      // ctx.dispatch(new GetCatListFailed(error))
-    }
+  }
+
+  @Action(ShowNotificationError)
+  showNotificationError(ctx: StateContext<IApp>, action: ShowNotificationError) {
+    this.snackBar.open('⚠️ ' + action.message, 'Close', {
+      duration: 5000,
+    });
   }
 }

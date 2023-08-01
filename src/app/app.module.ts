@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadingPictureComponent } from './components/pictures-list/lazy-loading-picture/lazy-loading-picture.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSelectModule,
     MatInputModule,
     MatGridListModule,
+    MatSnackBarModule,
     HttpClientModule,
     NgxsModule.forRoot([
       AppState,
