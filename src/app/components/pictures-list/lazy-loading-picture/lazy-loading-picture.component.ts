@@ -11,7 +11,6 @@ export class LazyLoadingPictureComponent {
   loading: boolean = true;
 
   onLoad() {
-    console.log('onLoad');
     this.loading = false;
   }
 }
