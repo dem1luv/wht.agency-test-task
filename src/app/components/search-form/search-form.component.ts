@@ -16,6 +16,7 @@ export class SearchFormComponent {
   @Output() selectChange: EventEmitter<void> = new EventEmitter<void>();
 
   limitValues: number[] = [10, 20, 50, 100];
+  trackById = (index: number, item: any) => item.id;
 
   onSelectChange() {
     this.selectChange.emit();

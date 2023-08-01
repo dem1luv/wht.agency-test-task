@@ -11,6 +11,7 @@ export class PicturesListComponent implements OnInit {
   @Input() list: ICat[] | null = [];
 
   gridCols: number = 6;
+  trackById = (index: number, item: any) => item.id;
 
   ngOnInit() {
     this.resizeGridList(window.innerWidth);

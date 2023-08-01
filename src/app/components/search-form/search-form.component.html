@@ -6,7 +6,7 @@
       </ng-container>
     </mat-label>
     <mat-select formControlName="breed" multiple (selectionChange)="onSelectChange()" [disabled]="!breedListLoaded">
-      <mat-option *ngFor="let item of breedList" [value]="item.id">{{item.name}}</mat-option>
+      <mat-option *ngFor="let item of breedList; trackBy:trackById" [value]="item.id">{{item.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 
