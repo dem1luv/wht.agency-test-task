@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { PicturesListComponent } from './components/pictures-list/pictures-list.component';
-import { AppState } from './state/app.state';
+import { AppState } from './state';
 import { NgxsModule } from '@ngxs/store';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';

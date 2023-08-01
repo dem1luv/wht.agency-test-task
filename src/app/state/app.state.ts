@@ -60,7 +60,7 @@ export class AppState {
   }
 
   @Action(GetCatList)
-  getCatList(ctx: StateContext<IApp>, action: GetCatList) {
+  getCatList(ctx: StateContext<IApp>) {
     ctx.setState({
       ...ctx.getState(),
       catListLoaded: false,
@@ -69,7 +69,7 @@ export class AppState {
     const form = ctx.getState().form;
     this.catService.getList(form.breed, form.limit)
       .pipe(
-        catchError(error => {
+        catchError(() => {
           ctx.dispatch(new ShowNotificationError('Failed to load list of cats'));
           return of([]);
         })
@@ -94,7 +94,7 @@ export class AppState {
   }
 
   @Action(GetBreedList)
-  getBreedList(ctx: StateContext<IApp>, action: GetBreedList) {
+  getBreedList(ctx: StateContext<IApp>) {
     ctx.setState({
       ...ctx.getState(),
       breedListLoaded: false,
@@ -102,7 +102,7 @@ export class AppState {
 
     this.catService.getBreedList()
       .pipe(
-        catchError(error => {
+        catchError(() => {
           ctx.dispatch(new ShowNotificationError('Failed to load breed list'));
           return of([]);
         })
