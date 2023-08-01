@@ -11,29 +11,19 @@ const apiUrl = `https://api.thecatapi.com/v1`;
   providedIn: 'root'
 })
 export class CatService {
-  getListLastTimestamp: number = 0;
+  getListCancelRequest: Subject<void> = new Subject<void>();
 
   constructor(private readonly http: HttpClient) { }
 
   getList(breedIds: string[], limit: number) {
-    const timestamp = Date.now();
-    this.getListLastTimestamp = timestamp;
-    const cancelRequest = new Subject<void>();
+    this.getListCancelRequest.next();
 
     const breedIdsQuery = breedIds ? breedIds.join(',') : '';
     const url = `${apiUrl}/images/search?api_key=${CAT_API_KEY}&breed_ids=${breedIdsQuery}&limit=${limit}`;
 
     return this.http
       .get<ICat[]>(url)
-      .pipe(
-        tap(() => {
-          if (timestamp < this.getListLastTimestamp) {
-            cancelRequest.next();
-            cancelRequest.complete();
-          }
-        }),
-        takeUntil(cancelRequest),
-      );
+      .pipe(takeUntil(this.getListCancelRequest));
   }
 
   getBreedList() {
