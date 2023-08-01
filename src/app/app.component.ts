@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AppState } from './state/app.state';
+import { AppState, GetBreedList, GetCatList, SetSearchForm } from './state';
 import { Select, Store } from '@ngxs/store';
-import { Observable, of } from 'rxjs';
-import { GetBreedList, GetCatList, SetSearchForm } from './state/app.actions';
+import { Observable } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ICat } from './types/common/cat.interface';
-import { IBreed } from './types/common/breed.interface';
+import { ICat, IBreed } from './types';
 
 @Component({
   selector: 'app-root',

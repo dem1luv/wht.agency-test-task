@@ -1,4 +1,4 @@
-import { ISearchForm } from '../types/state/search-form.interface';
+import { ISearchForm } from '../types';
 
 export class GetCatList {
   static readonly type = '[Cat API] Get Cat List';

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatSelectChange } from '@angular/material/select';
-import { FormControl, FormGroup } from '@angular/forms';
-import { IBreed } from '../../types/common/breed.interface';
+import { FormGroup } from '@angular/forms';
+import { IBreed } from '../../types';
 
 @Component({
   selector: 'app-search-form',

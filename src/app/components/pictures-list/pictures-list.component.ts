@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { ICat } from '../../types/common/cat.interface';
+import { ICat } from '../../types';
 
 @Component({
   selector: 'app-pictures-list',

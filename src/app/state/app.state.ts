@@ -1,5 +1,5 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { CatService } from '../services/cat.service';
+import { CatService } from '../services';
 import {
   GetBreedList,
   GetCatList,
@@ -7,7 +7,7 @@ import {
   ShowNotificationError
 } from './app.actions';
 import { Injectable } from '@angular/core';
-import { IApp } from '../types/state/app.interface';
+import { IApp } from '../types';
 import { catchError, of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

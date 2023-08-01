@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CAT_API_KEY } from '../app.constant';
-import { ICat } from '../types/common/cat.interface';
-import { IBreed } from '../types/common/breed.interface';
-import { BehaviorSubject, of, retry, Subject, takeUntil, tap } from 'rxjs';
+import { ICat, IBreed } from '../types';
+import { Subject, takeUntil } from 'rxjs';
 
 const apiUrl = `https://api.thecatapi.com/v1`;
 

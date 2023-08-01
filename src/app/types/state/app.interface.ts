@@ -1,5 +1,5 @@
-import { ICat } from '../common/cat.interface';
-import { IBreed } from '../common/breed.interface';
+import { ICat } from '../common';
+import { IBreed } from '../common';
 import { ISearchForm } from './search-form.interface';
 
 export interface IApp {
