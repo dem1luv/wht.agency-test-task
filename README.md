@@ -1,11 +1,11 @@
 # Pussearch - Cat Image Search App
 
-[Pussearch](https://lyashket.github.io/wht.agency-test-task/) is an Angular app that allows users to search for cat images using the provided API. The app presents a list of cat images with filtering options, enabling users to search for all or specific cat breeds and control the number of displayed results.
+[Pussearch](https://dem1luv.github.io/wht.agency-test-task/) is an Angular app that allows users to search for cat images using the provided API. The app presents a list of cat images with filtering options, enabling users to search for all or specific cat breeds and control the number of displayed results.
 
 
 ## Deployment | GitHub Pages
 
-The Cat Image Search app is deployed and accessible at the following link: [Pussearch](https://example-domain.com/cat-image-search)
+The Cat Image Search app is deployed and accessible at the following link: [Pussearch](https://dem1luv.github.io/wht.agency-test-task/)
 
 Feel free to explore the deployed app and test its features. If you encounter any issues or have feedback, please don't hesitate to reach out. Enjoy exploring the world of adorable cat images!
 
